@@ -7,6 +7,10 @@ React course given to check point in February 2020
 The course is available in video in this URL:
 https://www.youtube.com/playlist?list=PLnHa2cF4cNDtfkYKO6v069GUPYrJtijwc
 
+I'm uploading new react material every week so to keep updated subscribe to my user at:
+
+https://www.youtube.com/user/ywarezk
+
 ## Whatsapp Group
 
 You also have access to a whatsapp group where i publish my videos and answer React questions
@@ -99,6 +103,21 @@ In this EX. you will create a Todo List application.
 The solution for the Ex. is avilable in the following video:
 https://youtu.be/8vgzC3CI510
 
+- http://nztodo.herokuapp.com/api/task/?format=json
+- http://nztodo.herokuapp.com/api/graphql
+
+
+To send the request:
+
+```
+// fetch is returning Promise<Response>
+fetch('https://nztodo.herokuapp.com/api/task/?format=json')
+    .then((response) => {
+        // from response we want the data from the server
+        return response.json();
+    });
+```
+
 ### Forms and some React design patterns
 
 In this lesson we will learn how to deal with forms in React application.
@@ -115,4 +134,122 @@ We will cover the following topics:
 - custom hooks
 - Formik
 
+### Forms EX.
 
+In this ex you will understand how JWT and authentication is working in a spa.
+An important ex. that will escort you probably during your real life development.
+The ex and solution is in this video:
+
+https://youtu.be/8BtdI3-ateM
+
+- https://academeez-login-ex.herokuapp.com
+- Login: /api/users/login
+  - POST
+  - {email: '...', password: '...'}
+- Register: /api/users/register
+  - POST
+  - {email: '...', password: '...', firstName: '', lastName: ''}
+- Todo: /api/tasks
+  - GET
+  - headers: {
+      Authorization: Bearer <JWT>
+    }
+
+how to do send the request
+```
+// Register
+fetch("https://academeez-login-ex.herokuapp.com/api/users/register", {
+    method: "POST",
+    body: JSON.stringify(formValues),
+    headers: {
+        "Content-Type": "application/json"
+    }
+})
+
+// Login
+fetch("https://academeez-login-ex.herokuapp.com/api/users/login", {
+    method: "POST",
+    body: JSON.stringify(formValues),
+    headers: {
+        "Content-Type": "application/json"
+    }
+})
+
+// Todo
+fetch("https://academeez-login-ex.herokuapp.com/api/tasks", {        
+    headers: {
+        "Authorization": "Bearer <token>"
+    }
+})
+```
+
+### HOC, Render Props, Custom Hooks
+
+In this EX we will practice how to use the composition patterns we learned: HOC, Render Props
+and also the Custom Hook pattern to solve repeating code. 
+You will create 3 components that display log messages and a button in each one to create a new log.
+The ex is available in this Video:
+
+https://youtu.be/-tmLZX6scnY
+
+- your server is located in the following url: https://nztodo.herokuapp.com/api/task/?format=json
+- you can send a post request to create a new log
+- you can send a get request with the group param to query the list for group
+  - https://nztodo.herokuapp.com/api/task/?format=json&group=45
+- implement HOC called 
+```
+const EnhancedComponent = withLogger(group)(RegularComponent)
+```
+  - This HOC will send the child component in the props the list of logs from the server
+  - the HOC will also send a function to create a new log
+
+- implement Render Props that will get the group as prop and send in the render prop a function with the list of logs and the create function.
+
+```
+<Logger group={45} render={(logs, createLog) => ...}>
+```
+
+- implement custom hook function that will send the logs and the create log function.
+```
+const [logs, createLog] = useLogs(45)
+```
+
+### Redux
+
+In this lesson we will talk about Redux library which will help us arrange the data in our app.
+The lesson is available in the following video:
+
+https://youtu.be/7pZmBah66zE
+
+- The data problem we are trying to solve
+- What is Redux
+- Redux Architecture
+- Store
+- Reducers
+- Actions
+- state best practices
+- combineReducers
+- Redux dev tools
+- middlewares
+- redux-thunk
+
+### Redux EX.
+
+Redux is not an easy topic to chew so in this lesson we will practice how to work with Redux.
+We will create a simple chat app.
+We will have to arrange data we get from the server in a redux state and understand how to divide our components to smart containers which connect to the state, and simple components which are getting props.
+The solution for this EX. is available in the following video:
+
+https://youtu.be/3PKv9gG68Pg
+
+### Routing in React
+
+Our SPA will be divided to different screens, where each screen resides in a different url.
+In this lesson we will learn how to arrange the screens of our app, what is the best practices working with URL and how to pass data with the url.
+The lesson is available in the following video:
+
+https://youtu.be/TR5Dx8_cJcA
+
+We will cover the following:
+
+- 
